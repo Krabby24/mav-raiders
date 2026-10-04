@@ -1,0 +1,1794 @@
+
+======================================================================
+  MAVLink PCAP Inspector
+  File    : cattura_test_20260313_115900.pcap
+  Date    : 2026-03-20 00:47:15
+======================================================================
+
+[*] Loading PCAP...
+    Total packets in file : 102477
+[*] Extracting MAVLink packets...
+    MAVLink packets found  : 102477
+
+
+──────────────────────────────────────────────────────────────────────
+  [1] GENERAL OVERVIEW
+──────────────────────────────────────────────────────────────────────
+  MAVLink v1 packets  :      0 packets
+  MAVLink v2 packets  : 102477 packets
+    of which signed   :      0
+    of which UNSIGNED : 102477
+
+  Network ports used (top 5 by destination):
+  Dst Port    Packets
+----------  ---------
+     18570     102477
+
+  Observed IP flows:
+    172.25.12.121 → 172.25.0.1  :  102166 packets
+    172.25.0.1 → 172.25.12.121  :  311 packets
+
+──────────────────────────────────────────────────────────────────────
+  [2] MESSAGE TYPE DISTRIBUTION
+──────────────────────────────────────────────────────────────────────
+  MsgID  Name                          Count  %
+-------  --------------------------  -------  -----
+     33  GLOBAL_POSITION_INT           13732  13.4%
+     32  LOCAL_POSITION_NED            13732  13.4%
+     30  ATTITUDE                      13732  13.4%
+     31  ATTITUDE_QUATERNION           13732  13.4%
+     85  POSITION_TARGET_LOCAL_NED     13732  13.4%
+     36  SERVO_OUTPUT_RAW              13732  13.4%
+     83  ATTITUDE_TARGET               13732  13.4%
+     24  GPS_RAW_INT                    1373  1.3%
+     74  VFR_HUD                        1099  1.1%
+      0  HEARTBEAT                       554  0.5%
+    141  ALTITUDE                        275  0.3%
+    245  EXTENDED_SYS_STATE              275  0.3%
+  12901  UNKNOWN_12901                   275  0.3%
+  12904  UNKNOWN_12904                   275  0.3%
+     29  SCALED_PRESSURE                 275  0.3%
+      1  SYS_STATUS                      275  0.3%
+      8  UNKNOWN_8                       275  0.3%
+     42  MISSION_CURRENT                 274  0.3%
+     87  POSITION_TARGET_GLOBAL_INT      169  0.2%
+    147  BATTERY_STATUS                  137  0.1%
+    436  UNKNOWN_436                     137  0.1%
+    230  ESTIMATOR_STATUS                137  0.1%
+    242  HOME_POSITION                   137  0.1%
+    380  GENERATOR_STATUS                136  0.1%
+    411  SUPPORTED_TUNES                  91  0.1%
+      4  PING                             54  0.1%
+     46  MISSION_ITEM_REACHED             44  0.0%
+    241  VIBRATION                        27  0.0%
+     76  COMMAND_LONG                     21  0.0%
+    410  PLAY_TUNE_V2                     14  0.0%
+    253  STATUSTEXT                       11  0.0%
+     22  PARAM_VALUE                       7  0.0%
+     77  COMMAND_ACK                       4  0.0%
+     11  SET_MODE                          1  0.0%
+     23  PARAM_SET                         1  0.0%
+
+──────────────────────────────────────────────────────────────────────
+  [3] IDENTIFIED SYSTEMS
+──────────────────────────────────────────────────────────────────────
+  sysid    compid    Packets  Messages sent (top 5)
+-------  --------  ---------  ---------------------------------------------------
+      1         1     102166  HEARTBEAT, SYS_STATUS, PING, 8, PARAM_VALUE ... +28
+    255       190        311  HEARTBEAT, PING, SET_MODE, PARAM_SET, COMMAND_LONG
+
+  HEARTBEAT detail per system:
+    sysid=255 compid=190 | type=6 (GCS) | autopilot=8 (INVALID) | armed=True | status=4 (ACTIVE)
+    sysid=1 compid=1 | type=2 (QUADROTOR) | autopilot=12 (PX4) | armed=False | status=3 (STANDBY)
+
+──────────────────────────────────────────────────────────────────────
+  [4] SEQUENCE NUMBERS PER STREAM
+──────────────────────────────────────────────────────────────────────
+  sysid=1 compid=1: 102166 packets | seq range [0–255] | gap=2 | reset=1
+  sysid=255 compid=190: 311 packets | seq range [0–255] | gap=0 | reset=0
+
+──────────────────────────────────────────────────────────────────────
+  [5] COMPLETE PACKET EXAMPLES
+  (2 example(s) per message type)
+──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 0 — HEARTBEAT  (554 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #181  ts=1773399591.170166  UDP 172.25.0.1:18570 → 172.25.12.121:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 9 bytes
+│    seq       : 129
+│    sysid     : [32m255[0m
+│    compid    : 190
+│    msgid     : 0  ([35mHEARTBEAT[0m)
+│    crc       : 0xD9E1
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (9 bytes):[0m
+│    00 00 00 00 06 08 c0 04 03
+│  [1mDecoded payload:[0m
+│    custom_mode                  = 0
+│    type                         = 6 (GCS)
+│    autopilot                    = 8 (INVALID)
+│    base_mode                    = 0xC0
+│    armed                        = True
+│    auto_mode                    = False
+│    guided_mode                  = False
+│    stabilize                    = False
+│    system_status                = 4 (ACTIVE)
+│    mavlink_version              = 3
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #210  ts=1773399591.255406  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 9 bytes
+│    seq       : 87
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 0  ([35mHEARTBEAT[0m)
+│    crc       : 0x42E4
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (9 bytes):[0m
+│    00 00 04 03 02 0c 1d 03 03
+│  [1mDecoded payload:[0m
+│    custom_mode                  = 50593792
+│    type                         = 2 (QUADROTOR)
+│    autopilot                    = 12 (PX4)
+│    base_mode                    = 0x1D
+│    armed                        = False
+│    auto_mode                    = True
+│    guided_mode                  = True
+│    stabilize                    = True
+│    system_status                = 3 (STANDBY)
+│    mavlink_version              = 3
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 1 — SYS_STATUS  (275 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #221  ts=1773399591.255466  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 40 bytes
+│    seq       : 98
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 1  ([35mSYS_STATUS[0m)
+│    crc       : 0xDE33
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (40 bytes):[0m
+│    2f c0 00 03 2f c0 01 03 3f c8 20 13 af 01 48 3f
+│    9c ff 00 00 00 00 00 00 00 00 00 00 00 00 64 00
+│    00 00 00 00 00 00 00 01
+│  [1mDecoded payload:[0m
+│    battery_voltage_mV           = -6537400
+│    battery_current_cA           = 0
+│    cpu_load_%                   = 43.100000
+│    drop_rate_comm_%             = 0.000000
+│    errors_comm                  = 0
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #594  ts=1773399592.273496  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 40 bytes
+│    seq       : 214
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 1  ([35mSYS_STATUS[0m)
+│    crc       : 0x3F6C
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (40 bytes):[0m
+│    2f c0 00 03 2f c0 01 03 3f c8 20 13 af 01 48 3f
+│    9c ff 00 00 00 00 00 00 00 00 00 00 00 00 64 00
+│    00 00 00 00 00 00 00 01
+│  [1mDecoded payload:[0m
+│    battery_voltage_mV           = -6537400
+│    battery_current_cA           = 0
+│    cpu_load_%                   = 43.100000
+│    drop_rate_comm_%             = 0.000000
+│    errors_comm                  = 0
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 4 — PING  (54 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #2078  ts=1773399596.346366  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 9 bytes
+│    seq       : 158
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 4  ([35mPING[0m)
+│    crc       : 0x3899
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (9 bytes):[0m
+│    80 ee 9f 2d 00 00 00 00 4b
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 80ee9f2d000000004b
+│    length                       = 9
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #2086  ts=1773399596.348183  UDP 172.25.0.1:18570 → 172.25.12.121:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 14 bytes
+│    seq       : 135
+│    sysid     : [32m255[0m
+│    compid    : 190
+│    msgid     : 4  ([35mPING[0m)
+│    crc       : 0x5657
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (14 bytes):[0m
+│    80 ee 9f 2d 00 00 00 00 4b 00 00 00 01 01
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 80ee9f2d000000004b0000000101
+│    length                       = 14
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 8 — UNKNOWN_8  (275 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #223  ts=1773399591.255473  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 22 bytes
+│    seq       : 100
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 8  ([35mUNKNOWN_8[0m)
+│    crc       : 0x3A3A
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (22 bytes):[0m
+│    40 a3 53 2d 00 00 00 00 53 3c 00 00 14 00 00 00
+│    64 46 04 00 82 03
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 40a3532d00000000533c000014000000644604008203
+│    length                       = 22
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #596  ts=1773399592.273503  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 22 bytes
+│    seq       : 216
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 8  ([35mUNKNOWN_8[0m)
+│    crc       : 0x22DA
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (22 bytes):[0m
+│    80 e5 62 2d 00 00 00 00 65 3b 00 00 14 00 00 00
+│    d8 47 04 00 83 03
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 80e5622d00000000653b000014000000d84704008303
+│    length                       = 22
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 11 — SET_MODE  (1 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #45421  ts=1773399714.815988  UDP 172.25.0.1:18570 → 172.25.12.121:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 6 bytes
+│    seq       : 11
+│    sysid     : [32m255[0m
+│    compid    : 190
+│    msgid     : 11  ([35mSET_MODE[0m)
+│    crc       : 0x362E
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (6 bytes):[0m
+│    00 00 04 04 01 9d
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 00000404019d
+│    length                       = 6
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 22 — PARAM_VALUE  (7 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #60903  ts=1773399756.964194  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 25 bytes
+│    seq       : 179
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 22  ([35mPARAM_VALUE[0m)
+│    crc       : 0x0B90
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (25 bytes):[0m
+│    00 00 00 40 16 04 00 00 41 53 50 44 5f 53 43 41
+│    4c 45 5f 31 00 00 00 00 09
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 0000004016040000415350445f5343414c455f310000000009
+│    length                       = 25
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #60910  ts=1773399756.974295  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 25 bytes
+│    seq       : 186
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 22  ([35mPARAM_VALUE[0m)
+│    crc       : 0xDFD1
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (25 bytes):[0m
+│    00 00 00 40 16 04 00 00 41 53 50 44 5f 53 43 41
+│    4c 45 5f 31 00 00 00 00 09
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 0000004016040000415350445f5343414c455f310000000009
+│    length                       = 25
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 23 — PARAM_SET  (1 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #60902  ts=1773399756.964065  UDP 172.25.0.1:18570 → 172.25.12.121:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 23 bytes
+│    seq       : 58
+│    sysid     : [32m255[0m
+│    compid    : 190
+│    msgid     : 23  ([35mPARAM_SET[0m)
+│    crc       : 0xF01B
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (23 bytes):[0m
+│    00 00 00 40 01 01 41 53 50 44 5f 53 43 41 4c 45
+│    5f 31 00 00 00 00 09
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 000000400101415350445f5343414c455f310000000009
+│    length                       = 23
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 24 — GPS_RAW_INT  (1373 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #68  ts=1773399590.849537  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 44 bytes
+│    seq       : 202
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 24  ([35mGPS_RAW_INT[0m)
+│    crc       : 0x1790
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (44 bytes):[0m
+│    00 00 00 00 00 00 00 00 3e 5b 40 1c 86 0a 18 05
+│    ee 00 00 00 46 00 6e 00 00 00 50 17 03 0a ee 00
+│    00 00 84 03 00 00 f4 06 00 00 90 01
+│  [1mDecoded payload:[0m
+│    fix_type                     = 3
+│    lat_deg                      = 47.397971
+│    lon_deg                      = 8.546164
+│    alt_mm                       = 238
+│    alt_m                        = 0.238000
+│    vel_cm_s                     = 0
+│    satellites                   = 10
+│    hdop                         = 0.700000
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #140  ts=1773399591.051867  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 44 bytes
+│    seq       : 18
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 24  ([35mGPS_RAW_INT[0m)
+│    crc       : 0xDFEE
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (44 bytes):[0m
+│    00 00 00 00 00 00 00 00 3e 5b 40 1c 82 0a 18 05
+│    03 01 00 00 46 00 6e 00 02 00 83 78 03 0a 03 01
+│    00 00 84 03 00 00 f4 06 00 00 90 01
+│  [1mDecoded payload:[0m
+│    fix_type                     = 3
+│    lat_deg                      = 47.397971
+│    lon_deg                      = 8.546163
+│    alt_mm                       = 259
+│    alt_m                        = 0.259000
+│    vel_cm_s                     = 2
+│    satellites                   = 10
+│    hdop                         = 0.700000
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 29 — SCALED_PRESSURE  (275 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #219  ts=1773399591.255457  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 14 bytes
+│    seq       : 96
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 29  ([35mSCALED_PRESSURE[0m)
+│    crc       : 0x040C
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (14 bytes):[0m
+│    3c 9a 0b 00 65 4e 7d 44 00 00 00 00 8f 70
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 3c9a0b00654e7d44000000008f70
+│    length                       = 14
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #592  ts=1773399592.273488  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 14 bytes
+│    seq       : 212
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 29  ([35mSCALED_PRESSURE[0m)
+│    crc       : 0x91C7
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (14 bytes):[0m
+│    24 9e 0b 00 b9 4c 7d 44 00 00 00 00 8f 70
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 249e0b00b94c7d44000000008f70
+│    length                       = 14
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 30 — ATTITUDE  (13732 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #2  ts=1773399590.666559  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 28 bytes
+│    seq       : 136
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 30  ([35mATTITUDE[0m)
+│    crc       : 0x9442
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (28 bytes):[0m
+│    40 98 0b 00 6c b1 f8 b8 36 65 82 b9 00 c4 d2 3f
+│    a3 81 87 b9 69 0d c1 b9 ea 96 07 39
+│  [1mDecoded payload:[0m
+│    roll_deg                     = -0.006794
+│    pitch_deg                    = -0.014250
+│    yaw_deg                      = 94.343600
+│    rollspeed_rad_s              = -0.000258
+│    pitchspeed_rad_s             = -0.000368
+│    yawspeed_rad_s               = 0.000129
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #9  ts=1773399590.687059  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 28 bytes
+│    seq       : 143
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 30  ([35mATTITUDE[0m)
+│    crc       : 0xD080
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (28 bytes):[0m
+│    54 98 0b 00 0c b5 e1 b8 12 c8 81 b9 06 c4 d2 3f
+│    9c aa 68 39 02 38 9d b9 57 6e dc b9
+│  [1mDecoded payload:[0m
+│    roll_deg                     = -0.006166
+│    pitch_deg                    = -0.014183
+│    yaw_deg                      = 94.343641
+│    rollspeed_rad_s              = 0.000222
+│    pitchspeed_rad_s             = -0.000300
+│    yawspeed_rad_s               = -0.000420
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 31 — ATTITUDE_QUATERNION  (13732 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #3  ts=1773399590.666566  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 32 bytes
+│    seq       : 137
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 31  ([35mATTITUDE_QUATERNION[0m)
+│    crc       : 0xD4A8
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (32 bytes):[0m
+│    40 98 0b 00 87 07 2e 3f 9a 76 55 38 9b 3d 06 b9
+│    cd bf 3b 3f a3 81 87 b9 69 0d c1 b9 ea 96 07 39
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 40980b0087072e3f9a7655389b3d06b9cdbf3b3fa38187b9690dc1b9ea960739
+│    length                       = 32
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #10  ts=1773399590.687072  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 32 bytes
+│    seq       : 144
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 31  ([35mATTITUDE_QUATERNION[0m)
+│    crc       : 0x4C92
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (32 bytes):[0m
+│    54 98 0b 00 83 07 2e 3f df 49 63 38 e2 9b 01 b9
+│    d1 bf 3b 3f 9c aa 68 39 02 38 9d b9 57 6e dc b9
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 54980b0083072e3fdf496338e29b01b9d1bf3b3f9caa683902389db9576edcb9
+│    length                       = 32
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 32 — LOCAL_POSITION_NED  (13732 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #1  ts=1773399590.662854  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 28 bytes
+│    seq       : 135
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 32  ([35mLOCAL_POSITION_NED[0m)
+│    crc       : 0x7EC0
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (28 bytes):[0m
+│    38 98 0b 00 cb e4 2e 3b ed 60 e1 3c 2c 51 93 bd
+│    63 7c 91 3b 2d 84 7c 3c a0 3e 9e 3a
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 38980b00cbe42e3bed60e13c2c5193bd637c913b2d847c3ca03e9e3a
+│    length                       = 28
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #8  ts=1773399590.683065  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 28 bytes
+│    seq       : 142
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 32  ([35mLOCAL_POSITION_NED[0m)
+│    crc       : 0xE547
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (28 bytes):[0m
+│    50 98 0b 00 96 e4 16 3b 87 c6 e3 3c 36 50 91 bd
+│    9b 59 88 3b db 24 7c 3c f2 38 d9 3a
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 50980b0096e4163b87c6e33c365091bd9b59883bdb247c3cf238d93a
+│    length                       = 28
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 33 — GLOBAL_POSITION_INT  (13732 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #0  ts=1773399590.662833  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 28 bytes
+│    seq       : 134
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 33  ([35mGLOBAL_POSITION_INT[0m)
+│    crc       : 0x0F08
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (28 bytes):[0m
+│    38 98 0b 00 3f 5b 40 1c 88 0a 18 05 f0 00 00 00
+│    1e 00 00 00 00 00 01 00 00 00 da 24
+│  [1mDecoded payload:[0m
+│    lat_deg                      = 47.397971
+│    lon_deg                      = 8.546164
+│    alt_m                        = 0.240000
+│    rel_alt_m                    = 0.030000
+│    vx_cm_s                      = 0
+│    vy_cm_s                      = 1
+│    vz_cm_s                      = 0
+│    heading_cdeg                 = 9434
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #7  ts=1773399590.683051  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 28 bytes
+│    seq       : 141
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 33  ([35mGLOBAL_POSITION_INT[0m)
+│    crc       : 0x1E77
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (28 bytes):[0m
+│    50 98 0b 00 3f 5b 40 1c 88 0a 18 05 ef 00 00 00
+│    1d 00 00 00 00 00 01 00 00 00 da 24
+│  [1mDecoded payload:[0m
+│    lat_deg                      = 47.397971
+│    lon_deg                      = 8.546164
+│    alt_m                        = 0.239000
+│    rel_alt_m                    = 0.029000
+│    vx_cm_s                      = 0
+│    vy_cm_s                      = 1
+│    vz_cm_s                      = 0
+│    heading_cdeg                 = 9434
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 36 — SERVO_OUTPUT_RAW  (13732 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #5  ts=1773399590.666574  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 4 bytes
+│    seq       : 139
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 36  ([35mSERVO_OUTPUT_RAW[0m)
+│    crc       : 0xD05C
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (4 bytes):[0m
+│    00 ba 4a 2d
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 00ba4a2d
+│    length                       = 4
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #12  ts=1773399590.687086  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 4 bytes
+│    seq       : 146
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 36  ([35mSERVO_OUTPUT_RAW[0m)
+│    crc       : 0x2A85
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (4 bytes):[0m
+│    20 08 4b 2d
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 20084b2d
+│    length                       = 4
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 42 — MISSION_CURRENT  (274 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #325  ts=1773399591.544484  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 10 bytes
+│    seq       : 202
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 42  ([35mMISSION_CURRENT[0m)
+│    crc       : 0xE961
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (10 bytes):[0m
+│    00 00 05 00 02 02 ca 12 55 28
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 000005000202ca125528
+│    length                       = 10
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #699  ts=1773399592.574902  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 10 bytes
+│    seq       : 63
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 42  ([35mMISSION_CURRENT[0m)
+│    crc       : 0xC4FD
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (10 bytes):[0m
+│    00 00 05 00 02 02 ca 12 55 28
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 000005000202ca125528
+│    length                       = 10
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 46 — MISSION_ITEM_REACHED  (44 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #48142  ts=1773399722.228874  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 1 bytes
+│    seq       : 1
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 46  ([35mMISSION_ITEM_REACHED[0m)
+│    crc       : 0x0001
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (1 bytes):[0m
+│    00
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 00
+│    length                       = 1
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #48344  ts=1773399722.758198  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 1 bytes
+│    seq       : 202
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 46  ([35mMISSION_ITEM_REACHED[0m)
+│    crc       : 0x097E
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (1 bytes):[0m
+│    00
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 00
+│    length                       = 1
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 74 — VFR_HUD  (1099 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #34  ts=1773399590.747249  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 17 bytes
+│    seq       : 168
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 74  ([35mVFR_HUD[0m)
+│    crc       : 0xCAB3
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (17 bytes):[0m
+│    00 00 c0 7f 93 1d 7e 3c f4 cc 72 3e ed 7b 19 bb
+│    5e
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 0000c07f931d7e3cf4cc723eed7b19bb5e
+│    length                       = 17
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #121  ts=1773399591.002737  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 17 bytes
+│    seq       : 255
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 74  ([35mVFR_HUD[0m)
+│    crc       : 0x9B57
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (17 bytes):[0m
+│    00 00 c0 7f fb 16 57 3c 2a a0 6b 3e a0 77 92 bb
+│    5e
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 0000c07ffb16573c2aa06b3ea07792bb5e
+│    length                       = 17
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 76 — COMMAND_LONG  (21 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #36926  ts=1773399691.672370  UDP 172.25.0.1:18570 → 172.25.12.121:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 32 bytes
+│    seq       : 240
+│    sysid     : [32m255[0m
+│    compid    : 190
+│    msgid     : 76  ([35mCOMMAND_LONG[0m)
+│    crc       : 0x73CF
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (32 bytes):[0m
+│    00 00 80 bf 00 00 00 00 00 00 00 00 00 00 c0 7f
+│    00 00 c0 7f 00 00 c0 7f da a4 4f 40 16 00 01 01
+│  [1mDecoded payload:[0m
+│    target_system                = 22
+│    target_component             = 0
+│    command_id                   = 257
+│    command_name                 = CMD_257
+│    confirmation                 = 0
+│    param1                       = -1.000000
+│    param2                       = 0.000000
+│    param3                       = 0.000000
+│    param4                       = nan
+│    param5                       = nan
+│    param6                       = nan
+│    param7                       = 3.244437
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #36934  ts=1773399691.683337  UDP 172.25.0.1:18570 → 172.25.12.121:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 32 bytes
+│    seq       : 241
+│    sysid     : [32m255[0m
+│    compid    : 190
+│    msgid     : 76  ([35mCOMMAND_LONG[0m)
+│    crc       : 0xE05B
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (32 bytes):[0m
+│    00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00 00
+│    00 00 00 00 00 00 00 00 00 00 00 00 90 01 01 01
+│  [1mDecoded payload:[0m
+│    target_system                = 144
+│    target_component             = 1
+│    command_id                   = 257
+│    command_name                 = CMD_257
+│    confirmation                 = 0
+│    param1                       = 1.000000
+│    param2                       = 0.000000
+│    param3                       = 0.000000
+│    param4                       = 0.000000
+│    param5                       = 0.000000
+│    param6                       = 0.000000
+│    param7                       = 0.000000
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 77 — COMMAND_ACK  (4 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #36929  ts=1773399691.682174  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 10 bytes
+│    seq       : 87
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 77  ([35mCOMMAND_ACK[0m)
+│    crc       : 0x4369
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (10 bytes):[0m
+│    16 00 00 00 00 00 00 00 ff be
+│  [1mDecoded payload:[0m
+│    command_id                   = 22
+│    command_name                 = NAV_TAKEOFF
+│    result                       = 0 (ACCEPTED)
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #36936  ts=1773399691.694109  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 10 bytes
+│    seq       : 93
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 77  ([35mCOMMAND_ACK[0m)
+│    crc       : 0xA844
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (10 bytes):[0m
+│    90 01 00 00 00 00 00 00 ff be
+│  [1mDecoded payload:[0m
+│    command_id                   = 400
+│    command_name                 = COMPONENT_ARM_DISARM
+│    result                       = 0 (ACCEPTED)
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 83 — ATTITUDE_TARGET  (13732 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #6  ts=1773399590.670785  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 36 bytes
+│    seq       : 140
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 83  ([35mATTITUDE_TARGET[0m)
+│    crc       : 0x176B
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (36 bytes):[0m
+│    40 98 0b 00 87 07 2e 3f 00 00 00 00 00 00 00 00
+│    ce bf 3b 3f 74 59 f4 39 e6 8e 81 3a 00 00 9a b6
+│    6f 12 83 3a
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 40980b0087072e3f0000000000000000cebf3b3f7459f439e68e813a00009ab66f12833a
+│    length                       = 36
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #13  ts=1773399590.691028  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 36 bytes
+│    seq       : 147
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 83  ([35mATTITUDE_TARGET[0m)
+│    crc       : 0x989C
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (36 bytes):[0m
+│    58 98 0b 00 81 07 2e 3f 00 00 00 00 00 00 00 00
+│    d3 bf 3b 3f c3 87 e3 39 a6 4c 81 3a 00 00 00 00
+│    6f 12 83 3a
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 58980b0081072e3f0000000000000000d3bf3b3fc387e339a64c813a000000006f12833a
+│    length                       = 36
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 85 — POSITION_TARGET_LOCAL_NED  (13732 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #4  ts=1773399590.666572  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 51 bytes
+│    seq       : 138
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 85  ([35mPOSITION_TARGET_LOCAL_NED[0m)
+│    crc       : 0xB1DE
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (51 bytes):[0m
+│    40 98 0b 00 00 00 c0 7f 00 00 c0 7f 00 00 c0 7f
+│    00 00 c0 7f 00 00 c0 7f 00 00 c0 7f 00 00 00 00
+│    00 00 00 00 00 00 c8 42 00 c4 d2 3f 00 00 00 00
+│    3f 00 01
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 40980b000000c07f0000c07f0000c07f0000c07f0000c07f0000c07f00000000000000000000c84200c4d23f000000003f0001
+│    length                       = 51
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #11  ts=1773399590.687082  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 51 bytes
+│    seq       : 145
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 85  ([35mPOSITION_TARGET_LOCAL_NED[0m)
+│    crc       : 0xF58E
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (51 bytes):[0m
+│    50 98 0b 00 00 00 c0 7f 00 00 c0 7f 00 00 c0 7f
+│    00 00 c0 7f 00 00 c0 7f 00 00 c0 7f 00 00 00 00
+│    00 00 00 00 00 00 c8 42 20 c4 d2 3f 00 00 00 00
+│    3f 00 01
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 50980b000000c07f0000c07f0000c07f0000c07f0000c07f0000c07f00000000000000000000c84220c4d23f000000003f0001
+│    length                       = 51
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 87 — POSITION_TARGET_GLOBAL_INT  (169 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #36938  ts=1773399691.694193  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 51 bytes
+│    seq       : 95
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 87  ([35mPOSITION_TARGET_GLOBAL_INT[0m)
+│    crc       : 0xD64E
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (51 bytes):[0m
+│    f8 1b 0d 00 40 5b 40 1c 87 0a 18 05 da a4 4f 40
+│    00 00 c0 7f 00 00 c0 7f 00 00 c0 7f 00 00 00 00
+│    00 00 00 00 00 00 c8 42 b8 90 d2 3f 00 00 00 00
+│    00 00 05
+│  [1mDecoded payload:[0m
+│    raw_hex                      = f81b0d00405b401c870a1805daa44f400000c07f0000c07f0000c07f00000000000000000000c842b890d23f00000000000005
+│    length                       = 51
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #37313  ts=1773399692.705595  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 51 bytes
+│    seq       : 213
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 87  ([35mPOSITION_TARGET_GLOBAL_INT[0m)
+│    crc       : 0x5459
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (51 bytes):[0m
+│    e0 1f 0d 00 40 5b 40 1c 87 0a 18 05 da a4 4f 40
+│    00 00 c0 7f 00 00 c0 7f 00 00 c0 7f 00 00 00 00
+│    00 00 00 00 00 00 c8 42 af 8e d2 3f 00 00 00 00
+│    00 00 05
+│  [1mDecoded payload:[0m
+│    raw_hex                      = e01f0d00405b401c870a1805daa44f400000c07f0000c07f0000c07f00000000000000000000c842af8ed23f00000000000005
+│    length                       = 51
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 141 — ALTITUDE  (275 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #211  ts=1773399591.255420  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 32 bytes
+│    seq       : 88
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 141  ([35mALTITUDE[0m)
+│    crc       : 0x6BE9
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (32 bytes):[0m
+│    40 a3 53 2d 00 00 00 00 b0 93 6b 3e e5 40 69 3e
+│    d8 81 72 3d 88 66 8f 3c 00 00 c0 7f 00 00 c0 7f
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 40a3532d00000000b0936b3ee540693ed881723d88668f3c0000c07f0000c07f
+│    length                       = 32
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #580  ts=1773399592.273438  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 32 bytes
+│    seq       : 200
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 141  ([35mALTITUDE[0m)
+│    crc       : 0x05F5
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (32 bytes):[0m
+│    80 e5 62 2d 00 00 00 00 c4 ce 01 3f d7 ad 67 3e
+│    a0 35 6c 3d 18 ce 82 3c 00 00 c0 7f 00 00 c0 7f
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 80e5622d00000000c4ce013fd7ad673ea0356c3d18ce823c0000c07f0000c07f
+│    length                       = 32
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 147 — BATTERY_STATUS  (137 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #583  ts=1773399592.273451  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 41 bytes
+│    seq       : 203
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 147  ([35mBATTERY_STATUS[0m)
+│    crc       : 0x9CC1
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (41 bytes):[0m
+│    2e ff ff ff ff ff ff ff ff 7f 48 3f ff ff ff ff
+│    ff ff ff ff ff ff ff ff ff ff ff ff ff ff 9c ff
+│    00 01 01 64 00 00 00 00 01
+│  [1mDecoded payload:[0m
+│    battery_id                   = 46
+│    battery_function             = 255
+│    type                         = 255
+│    temperature_cdegC            = -1
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #1327  ts=1773399594.312922  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 41 bytes
+│    seq       : 177
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 147  ([35mBATTERY_STATUS[0m)
+│    crc       : 0xAA59
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (41 bytes):[0m
+│    2e ff ff ff ff ff ff ff ff 7f 48 3f ff ff ff ff
+│    ff ff ff ff ff ff ff ff ff ff ff ff ff ff 9c ff
+│    00 01 01 64 00 00 00 00 01
+│  [1mDecoded payload:[0m
+│    battery_id                   = 46
+│    battery_function             = 255
+│    type                         = 255
+│    temperature_cdegC            = -1
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 230 — ESTIMATOR_STATUS  (137 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #585  ts=1773399592.273459  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 42 bytes
+│    seq       : 205
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 230  ([35mESTIMATOR_STATUS[0m)
+│    crc       : 0x7196
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (42 bytes):[0m
+│    40 c6 62 2d 00 00 00 00 c9 65 c9 3b d8 39 98 3b
+│    44 68 ca 3a 2d 15 f3 39 00 00 c0 7f 00 00 c0 7f
+│    be bf 1b 3e ac 94 2a 3e bf 03
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 40c6622d00000000c965c93bd839983b4468ca3a2d15f3390000c07f0000c07fbebf1b3eac942a3ebf03
+│    length                       = 42
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #1329  ts=1773399594.312931  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 42 bytes
+│    seq       : 179
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 230  ([35mESTIMATOR_STATUS[0m)
+│    crc       : 0xA54B
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (42 bytes):[0m
+│    c0 4a 81 2d 00 00 00 00 9f e5 2b 3c 54 e6 71 3b
+│    7c e1 01 3b dd 5c 66 3a 00 00 c0 7f 00 00 c0 7f
+│    4b 0c 1b 3e 48 40 2a 3e bf 03
+│  [1mDecoded payload:[0m
+│    raw_hex                      = c04a812d000000009fe52b3c54e6713b7ce1013bdd5c663a0000c07f0000c07f4b0c1b3e48402a3ebf03
+│    length                       = 42
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 241 — VIBRATION  (27 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #2084  ts=1773399596.346384  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 20 bytes
+│    seq       : 164
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 241  ([35mVIBRATION[0m)
+│    crc       : 0x2D85
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (20 bytes):[0m
+│    80 ee 9f 2d 00 00 00 00 6b 5e 6e 2b c4 33 76 3a
+│    39 49 f4 3b
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 80ee9f2d000000006b5e6e2bc433763a3949f43b
+│    length                       = 20
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #5806  ts=1773399606.523134  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 20 bytes
+│    seq       : 35
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 241  ([35mVIBRATION[0m)
+│    crc       : 0x0713
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (20 bytes):[0m
+│    00 85 38 2e 00 00 00 00 ff d4 56 2b f3 62 85 3a
+│    e6 1e ee 3b
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 0085382e00000000ffd4562bf362853ae61eee3b
+│    length                       = 20
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 242 — HOME_POSITION  (137 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #588  ts=1773399592.273473  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 55 bytes
+│    seq       : 208
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 242  ([35mHOME_POSITION[0m)
+│    crc       : 0x4771
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (55 bytes):[0m
+│    3f 5b 40 1c 85 0a 18 05 d2 00 00 00 f7 00 a4 3b
+│    b4 19 c8 3b 94 ce 2a bd b4 0d 2e 3f 0e 43 c7 39
+│    70 cd a5 b8 11 ba 3b 3f 00 00 00 00 00 00 00 00
+│    00 00 00 00 00 9b 78
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 3f5b401c850a1805d2000000f700a43bb419c83b94ce2abdb40d2e3f0e43c73970cda5b811ba3b3f000000000000000000000000009b78
+│    length                       = 55
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #1332  ts=1773399594.312945  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 55 bytes
+│    seq       : 182
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 242  ([35mHOME_POSITION[0m)
+│    crc       : 0xD910
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (55 bytes):[0m
+│    3f 5b 40 1c 85 0a 18 05 d2 00 00 00 f7 00 a4 3b
+│    b4 19 c8 3b 94 ce 2a bd b4 0d 2e 3f 0e 43 c7 39
+│    70 cd a5 b8 11 ba 3b 3f 00 00 00 00 00 00 00 00
+│    00 00 00 00 00 9b 78
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 3f5b401c850a1805d2000000f700a43bb419c83b94ce2abdb40d2e3f0e43c73970cda5b811ba3b3f000000000000000000000000009b78
+│    length                       = 55
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 245 — EXTENDED_SYS_STATE  (275 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #214  ts=1773399591.255434  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 2 bytes
+│    seq       : 91
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 245  ([35mEXTENDED_SYS_STATE[0m)
+│    crc       : 0x592C
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (2 bytes):[0m
+│    00 01
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 0001
+│    length                       = 2
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #586  ts=1773399592.273463  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 2 bytes
+│    seq       : 206
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 245  ([35mEXTENDED_SYS_STATE[0m)
+│    crc       : 0x1077
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (2 bytes):[0m
+│    00 01
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 0001
+│    length                       = 2
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 253 — STATUSTEXT  (11 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #36937  ts=1773399691.694123  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 52 bytes
+│    seq       : 94
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 253  ([35mSTATUSTEXT[0m)
+│    crc       : 0x86FD
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (52 bytes):[0m
+│    06 41 72 6d 65 64 20 62 79 20 65 78 74 65 72 6e
+│    61 6c 20 63 6f 6d 6d 61 6e 64 09 00 00 00 00 00
+│    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+│    00 00 00 01
+│  [1mDecoded payload:[0m
+│    severity                     = 6 (INFO)
+│    text                         = Armed by external command	
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #37597  ts=1773399693.475987  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 52 bytes
+│    seq       : 240
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 253  ([35mSTATUSTEXT[0m)
+│    crc       : 0x7044
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (52 bytes):[0m
+│    06 54 61 6b 65 6f 66 66 20 64 65 74 65 63 74 65
+│    64 09 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+│    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+│    00 00 00 02
+│  [1mDecoded payload:[0m
+│    severity                     = 6 (INFO)
+│    text                         = Takeoff detected	
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 380 — GENERATOR_STATUS  (136 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #598  ts=1773399592.278034  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 20 bytes
+│    seq       : 218
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 380  ([35mGENERATOR_STATUS[0m)
+│    crc       : 0x092C
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (20 bytes):[0m
+│    00 00 00 00 ff ff ff ff ff ff ff ff ff ff ff ff
+│    ff ff ff ff
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 00000000ffffffffffffffffffffffffffffffff
+│    length                       = 20
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #1348  ts=1773399594.332985  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 20 bytes
+│    seq       : 198
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 380  ([35mGENERATOR_STATUS[0m)
+│    crc       : 0xC6AA
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (20 bytes):[0m
+│    00 00 00 00 ff ff ff ff ff ff ff ff ff ff ff ff
+│    ff ff ff ff
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 00000000ffffffffffffffffffffffffffffffff
+│    length                       = 20
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 410 — PLAY_TUNE_V2  (14 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #36939  ts=1773399691.694204  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 14 bytes
+│    seq       : 96
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 410  ([35mPLAY_TUNE_V2[0m)
+│    crc       : 0x5F32
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (14 bytes):[0m
+│    f3 ca 90 01 f4 1b 0d 00 15 00 00 00 66 04
+│  [1mDecoded payload:[0m
+│    raw_hex                      = f3ca9001f41b0d00150000006604
+│    length                       = 14
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #37599  ts=1773399693.476012  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 13 bytes
+│    seq       : 242
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 410  ([35mPLAY_TUNE_V2[0m)
+│    crc       : 0xB1D6
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (13 bytes):[0m
+│    69 45 41 01 cc 22 0d 00 16 00 00 00 66
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 69454101cc220d001600000066
+│    length                       = 13
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 411 — SUPPORTED_TUNES  (91 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #968  ts=1773399593.305580  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 1 bytes
+│    seq       : 75
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 411  ([35mSUPPORTED_TUNES[0m)
+│    crc       : 0xA736
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (1 bytes):[0m
+│    14
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 14
+│    length                       = 1
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #2090  ts=1773399596.362463  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 1 bytes
+│    seq       : 169
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 411  ([35mSUPPORTED_TUNES[0m)
+│    crc       : 0xB4BA
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (1 bytes):[0m
+│    14
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 14
+│    length                       = 1
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 436 — UNKNOWN_436  (137 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #584  ts=1773399592.273454  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 8 bytes
+│    seq       : 204
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 436  ([35mUNKNOWN_436[0m)
+│    crc       : 0xB16E
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (8 bytes):[0m
+│    00 00 04 03 00 00 04 03
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 0000040300000403
+│    length                       = 8
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #1328  ts=1773399594.312926  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 8 bytes
+│    seq       : 178
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 436  ([35mUNKNOWN_436[0m)
+│    crc       : 0x2C7E
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (8 bytes):[0m
+│    00 00 04 03 00 00 04 03
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 0000040300000403
+│    length                       = 8
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 12901 — UNKNOWN_12901  (275 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #216  ts=1773399591.255446  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 58 bytes
+│    seq       : 93
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 12901  ([35mUNKNOWN_12901[0m)
+│    crc       : 0x5BD5
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (58 bytes):[0m
+│    3d 5b 40 1c 84 0a 18 05 b0 93 6b 3e 00 00 00 00
+│    88 66 8f 3c 00 ff 7f 47 f8 43 00 00 04 00 00 00
+│    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+│    00 00 00 00 01 00 0c 05 00 03
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 3d5b401c840a1805b0936b3e0000000088668f3c00ff7f47f843000004000000000000000000000000000000000000000000000001000c050003
+│    length                       = 58
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #589  ts=1773399592.273478  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 58 bytes
+│    seq       : 209
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 12901  ([35mUNKNOWN_12901[0m)
+│    crc       : 0x9D5A
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (58 bytes):[0m
+│    3f 5b 40 1c 86 0a 18 05 c4 ce 01 3f 00 00 00 00
+│    18 ce 82 3c 00 ff 7f 47 18 79 01 00 fd ff 00 00
+│    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+│    00 00 00 00 01 00 0c 05 00 03
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 3f5b401c860a1805c4ce013f0000000018ce823c00ff7f4718790100fdff0000000000000000000000000000000000000000000001000c050003
+│    length                       = 58
+└──────────────────────────────────────────────────────────────────────
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MSG 12904 — UNKNOWN_12904  (275 total packets)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[36m┌─ Packet #217  ts=1773399591.255449  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 25 bytes
+│    seq       : 94
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 12904  ([35mUNKNOWN_12904[0m)
+│    crc       : 0x2494
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (25 bytes):[0m
+│    3f 5b 40 1c 85 0a 18 05 00 00 7a c4 00 00 7a c4
+│    14 54 57 3e 80 52 d5 a3 01
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 3f5b401c850a180500007ac400007ac41454573e8052d5a301
+│    length                       = 25
+└──────────────────────────────────────────────────────────────────────
+
+[36m┌─ Packet #590  ts=1773399592.273481  UDP 172.25.12.121:18570 → 172.25.0.1:18570[0m
+│  [1mMAVLink Header:[0m
+│    version   : [33mv2[0m
+│    STX       : 0xFD
+│    length    : 25 bytes
+│    seq       : 210
+│    sysid     : [32m1[0m
+│    compid    : 1
+│    msgid     : 12904  ([35mUNKNOWN_12904[0m)
+│    crc       : 0x30B4
+│    inc_flag  : 0x00
+│    cmp_flag  : 0x00
+│    signed    : [33mNO  ← non signed[0m
+│  [1mPayload (25 bytes):[0m
+│    3f 5b 40 1c 85 0a 18 05 00 00 7a c4 00 00 7a c4
+│    14 54 57 3e 80 52 d5 a3 01
+│  [1mDecoded payload:[0m
+│    raw_hex                      = 3f5b401c850a180500007ac400007ac41454573e8052d5a301
+│    length                       = 25
+└──────────────────────────────────────────────────────────────────────
+
+
+──────────────────────────────────────────────────────────────────────
+  [6] ALL INTERCEPTED COMMAND_LONG (21 totali)
+──────────────────────────────────────────────────────────────────────
+  seq=240 | sysid=255 → target=22 | cmd=257 (CMD_257) | confirm=0 | params=[-1.0, 0.0, 0.0, 3.2]
+  seq=241 | sysid=255 → target=144 | cmd=257 (CMD_257) | confirm=0 | params=[1.0, 0.0, 0.0, 0.0]
+  seq=166 | sysid=1 → target=? | cmd=? (?) | confirm=? | params=[0.0, 0.0, 0.0, 0.0]
+  seq=167 | sysid=1 → target=? | cmd=? (?) | confirm=? | params=[0.0, 0.0, 0.0, 0.0]
+  seq= 26 | sysid=1 → target=? | cmd=? (?) | confirm=? | params=[0.0, 0.0, 0.0, 0.0]
+  seq= 27 | sysid=1 → target=? | cmd=? (?) | confirm=? | params=[0.0, 0.0, 0.0, 0.0]
+  seq= 28 | sysid=1 → target=? | cmd=? (?) | confirm=? | params=[0.0, 0.0, 0.0, 0.0]
+  seq= 42 | sysid=1 → target=20 | cmd=1 (CMD_1) | confirm=1 | params=[0.0, 0.0, 0.0, 0.0]
+  seq= 43 | sysid=1 → target=211 | cmd=1 (CMD_1) | confirm=1 | params=[-1.0, 0.0, 1.0, 0.0]
+  seq=151 | sysid=1 → target=233 | cmd=1 (CMD_1) | confirm=1 | params=[1.0, 1.0, -1.0, 0.0]
+  seq=234 | sysid=1 → target=20 | cmd=1 (CMD_1) | confirm=2 | params=[0.0, 0.0, 0.0, 0.0]
+  seq=235 | sysid=1 → target=211 | cmd=1 (CMD_1) | confirm=2 | params=[-1.0, 0.0, 1.0, 0.0]
+  seq= 82 | sysid=1 → target=233 | cmd=1 (CMD_1) | confirm=2 | params=[1.0, 1.0, -1.0, 0.0]
+  seq=170 | sysid=1 → target=20 | cmd=1 (CMD_1) | confirm=3 | params=[0.0, 0.0, 0.0, 0.0]
+  seq=171 | sysid=1 → target=211 | cmd=1 (CMD_1) | confirm=3 | params=[-1.0, 0.0, 1.0, 0.0]
+  seq= 23 | sysid=1 → target=233 | cmd=1 (CMD_1) | confirm=3 | params=[1.0, 1.0, -1.0, 0.0]
+  seq=170 | sysid=1 → target=? | cmd=? (?) | confirm=? | params=[0.0, 0.0, 0.0, 0.0]
+  seq= 32 | sysid=1 → target=0 | cmd=1 (CMD_1) | confirm=1 | params=[0.0, 2.0, 80.0, 0.2]
+  seq=218 | sysid=1 → target=0 | cmd=1 (CMD_1) | confirm=2 | params=[0.0, 2.0, 80.0, 0.2]
+  seq=157 | sysid=1 → target=0 | cmd=1 (CMD_1) | confirm=3 | params=[0.0, 2.0, 80.0, 0.2]
+  seq=176 | sysid=255 → target=144 | cmd=257 (CMD_257) | confirm=0 | params=[0.0, 0.0, 0.0, 0.0]
+
+──────────────────────────────────────────────────────────────────────
+  [7] STATUSTEXT (11 messages)
+──────────────────────────────────────────────────────────────────────
+  [6 (INFO)] Armed by external command	
+  [6 (INFO)] Takeoff detected	
+  [6 (INFO)] Executing Mission	
+  [6 (INFO)] Climb to 15.0 meters above home	
+  [6 (INFO)] Mission finished, loitering	
+  [6 (INFO)] Returning to launch	
+  [6 (INFO)] RTL: start return at 31 m (30 m above destination)
+  [6 (INFO)] 	
+  [6 (INFO)] RTL: land at destination	
+  [6 (INFO)] Landing detected	
+  [6 (INFO)] Disarmed by external command	
+
+======================================================================
+  Analysis complete — 102477 MAVLink packets examined
+======================================================================
+

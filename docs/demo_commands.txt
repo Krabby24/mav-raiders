@@ -1,0 +1,50 @@
+3 DRONI (4 terminali su cartella di progetto)
+
+1) make px4_sitl
+2) PX4_SYS_AUTOSTART=4001 PX4_GZ_MODEL=x500 ./build/px4_sitl_default/bin/px4 -i 0
+3) PX4_SYS_AUTOSTART=4001 PX4_GZ_MODEL_POSE="0,2" PX4_GZ_MODEL=x500 ./build/px4_sitl_default/bin/px4 -i 1
+4) PX4_SYS_AUTOSTART=4001 PX4_GZ_MODEL_POSE="0,-2" PX4_GZ_MODEL=x500 ./build/px4_sitl_default/bin/px4 -i 2
+
+andare su commlinks e connettere quello da 3
+
+
+
+ATTACCO DRONE -> QGC 
+va bene, file inject_qgc.py da eseguire come viene detto su claude
+ATTACCO PIU' EFFICACE: C+D (APRIRE DUE TERMINALI, DA UNO ESEGUIRE C CON DURATION 60 E NELL'ALTRO D CON 200000 PACCHETTI DA INVIARE)
+python3 inject_qgc.py --attack C --duration 60
+python3 inject_qgc.py --attack D --count 200000
+
+ATTACCO IMPERSONANDO QGC -> FLOTTA
+CASO 1: flotta piccola, la documentazione dice che tutti hanno la stessa chiave condivisa, dato che il nostro drone è compromesso possiamo performare l'attacco, utilizzando injection
+file inject_drones_v2.py
+attacco più efficace: F
+python3 inject_drones_v2.py --attack F --target-sysid 2
+python3 inject_drones_v2.py --attack F --target-sysid 3
+su due terminali
+
+CASO 2: flotta grande, non abbiamo gli sysid , dunque performiamo MITM stando in ascolto e individuando tutti i droni della flotta
+file : mavproxy_hijack.py
+launch_mitm.sh
+da salvare sempre nella home del progetto
+comandi: 1) chmod +x launch_mitm.sh
+	2) 3 terminali aggiuntivi e runnare i 3 droni px4 gz_x500
+3) aprire qgc e non connettere i droni
+4) ./launch_mitm.sh 3
+5) nel terminale di running scrivbere: hijack debug (per report) / hijack rtl (per farli atterrare) / hijack mission (mission deception)
+
+CASO 3: (CASO 2 ANDREBBE ANCHE SORVOLATO)
+Flotta di dimensioni anche grandi, siamo nel caso SIGNED e non abbiamo la chiave condivisa
+QGC chiede di connettersi ai droni
+Noi, siamo MITM, e diciamo ai droni che qgc non supporta mavlink v2
+Per costruzione dei droni (è tutto documentato) il drone performa downgrade a v1
+Noi siamo quindi in grado di iniettare quello che vogliamo
+FILE : mavproxy_hijack.py
+launch_mitm.sh
+da salvare sempre nella home del progetto
+COMANDI: 1) chmod +x launch_mitm.sh
+	2) 3 terminali aggiuntivi e runnare i 3 droni px4 gz_x500
+3) aprire qgc e non connettere i droni
+4) ./launch_mitm.sh 3
+5) hijack status + hijack downgrade 
+6) nel terminale di running scrivbere: hijack debug (per report) / hijack rtl (per farli atterrare) / hijack mission (mission deception)

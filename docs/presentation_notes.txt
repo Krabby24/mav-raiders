@@ -1,0 +1,17 @@
+1) intro 
+2) grande spiegazione dell'approccio per l'attacco "nostro drone" -> QGC e 
+delle tipologie di attacchi che abbiamo implementato in "inject_qgc"
+3) breve demo chiara in cui si vede attacco combinato C+D a Qgc
+4) grande spiegazione dell'approccio e assunzioni fatte per l'attacco 
+impersonando QGC verso la flotta di droni, "se la flotta è piccola allora …, se è grande allora…" 
+la parte SIGNED è ancora da sviluppare
+5) breve demo
+6) conclusione
+
+TIMING (MAX 8 MINUTI PRECISI)
+
+1)+2) 3 minuti PRECISI
+3) 1 minuto
+4) 3 minuti MAX
+5) 1 minuto
+6) quello che resta

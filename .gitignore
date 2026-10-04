@@ -1,0 +1,55 @@
+# Python bytecode / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local environment / secrets
+.env
+.env.*
+*.key
+*.pem
+
+# Packet captures
+*.pcap
+*.pcapng
+
+# Video / demo artifacts
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
+*.7z
+
+# Temporary files
+*.tmp
+*.temp
+*.log

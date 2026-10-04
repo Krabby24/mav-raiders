@@ -1,0 +1,17 @@
+# Normalize text files
+* text=auto
+
+# Shell scripts must use Unix line endings
+*.sh text eol=lf
+
+# Python source
+*.py text eol=lf
+
+# Documentation
+*.md text eol=lf
+*.txt text eol=lf
+
+# Binary files
+*.pcap binary
+*.pcapng binary
+*.mp4 binary
