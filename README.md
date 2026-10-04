@@ -1,344 +1,239 @@
-\# MAV Raiders
+# MAV Raiders
 
-
-
-\*\*Security Analysis and Exploitation of MAVLink-Based Drone Communications\*\*
-
-
+**Security Analysis and Exploitation of MAVLink-Based Drone Communications**
 
 MAV Raiders is a university cybersecurity project focused on the security analysis of MAVLink-based drone communications.
 
-
-
 The project investigates the attack surface exposed by MAVLink communication between PX4 simulated UAVs and a Ground Control Station (QGroundControl), with particular attention to reconnaissance, packet inspection, message injection, fuzzing, denial-of-service conditions, man-in-the-middle attacks, and MAVLink signing.
-
-
 
 All experiments were conducted in a controlled and authorized simulation environment using PX4 SITL.
 
-
-
-\## Project Goals
-
-
+## Project Goals
 
 The project aims to study the security implications of MAVLink-based communication and evaluate how an attacker with network access could interact with or interfere with UAV communication.
 
-
-
 The implemented tools cover several phases of a security assessment:
 
+- MAVLink endpoint reconnaissance
+- MAVLink traffic inspection
+- vulnerability testing
+- message and command injection
+- protocol fuzzing
+- parameter manipulation
+- denial-of-service and crash experiments
+- MAVProxy-based traffic interception
+- man-in-the-middle attacks
+- MAVLink signing security analysis
 
-
-\- MAVLink endpoint reconnaissance
-
-\- MAVLink traffic inspection
-
-\- vulnerability testing
-
-\- message and command injection
-
-\- protocol fuzzing
-
-\- parameter manipulation
-
-\- denial-of-service and crash experiments
-
-\- MAVProxy-based traffic interception
-
-\- man-in-the-middle attacks
-
-\- MAVLink signing security analysis
-
-
-
-\## Test Environment
-
-
+## Test Environment
 
 The project was developed and tested using a Windows + WSL2 environment.
 
+### Windows
 
+- QGroundControl
 
-\### Windows
+### WSL2 / Ubuntu
 
-
-
-\- QGroundControl
-
-
-
-\### WSL2 / Ubuntu
-
-
-
-\- PX4 SITL
-
-\- Python 3.12.3
-
-\- pymavlink 2.4.49
-
-\- Scapy 2.7.0
-
-\- Colorama 0.4.6
-
-\- Tabulate 0.10.0
-
-\- MAVProxy 1.8.74
-
-
+- PX4 SITL
+- Python 3.12.3
+- pymavlink 2.4.49
+- Scapy 2.7.0
+- Colorama 0.4.6
+- Tabulate 0.10.0
+- MAVProxy 1.8.74
 
 Multiple PX4 SITL instances were used to reproduce a small multi-drone environment.
 
-
-
-\## Architecture
-
-
+## Architecture
 
 A simplified representation of the experimental environment is:
 
-
-
 ```text
+                 MAVLink / UDP
 
-&#x20;                MAVLink / UDP
-
-
-
-&#x20;  +-------------+       +------------------+
-
-&#x20;  | PX4 SITL #1 |------>|
-
-&#x20;  +-------------+       |
-
-&#x20;                        |
-
-&#x20;  +-------------+       |   Analysis /
-
-&#x20;  | PX4 SITL #2 |------>|   Attack Tools
-
-&#x20;  +-------------+       |
-
-&#x20;                        |
-
-&#x20;  +-------------+       |
-
-&#x20;  | PX4 SITL #3 |------>|
-
-&#x20;  +-------------+       +---------+--------+
-
-&#x20;                                  |
-
-&#x20;                                  | MAVLink
-
-&#x20;                                  v
-
-&#x20;                          +---------------+
-
-&#x20;                          | QGroundControl|
-
-&#x20;                          +---------------+
-
-
+   +-------------+       +------------------+
+   | PX4 SITL #1 |------>|
+   +-------------+       |
+                         |
+   +-------------+       |   Analysis /
+   | PX4 SITL #2 |------>|   Attack Tools
+   +-------------+       |
+                         |
+   +-------------+       |
+   | PX4 SITL #3 |------>|
+   +-------------+       +---------+--------+
+                                   |
+                                   | MAVLink
+                                   v
+                           +---------------+
+                           | QGroundControl|
+                           +---------------+
+```
 
 For the MITM experiments, MAVProxy is positioned between the PX4 instances and QGroundControl, allowing MAVLink traffic to be observed and manipulated in the controlled test environment.
 
-Repository Structure
+## Repository Structure
 
+```text
 .
-
 ├── recon.py
-
-├── mavlink\_inspector.py
-
-├── vuln\_tester.py
-
+├── mavlink_inspector.py
+├── vuln_tester.py
 ├── fuzzer.py
-
-├── inject\_qgc.py
-
-├── inject\_drones\_v2.py
-
-├── inject\_drones\_v3.py
-
-├── qgc\_param\_crash.py
-
-├── px4\_crash\_exploits.py
-
-├── mavproxy\_hijack.py
-
-├── mavlink\_mitm\_attack.py
-
-├── threat\_c\_signing\_bypass.py
-
-├── launch\_mitm.sh
-
+├── inject_qgc.py
+├── inject_drones_v2.py
+├── inject_drones_v3.py
+├── qgc_param_crash.py
+├── px4_crash_exploits.py
+├── mavproxy_hijack.py
+├── mavlink_mitm_attack.py
+├── threat_c_signing_bypass.py
+├── launch_mitm.sh
 ├── requirements.txt
-
 │
-
 ├── docs/
-
-│   ├── attack\_plan.md
-
-│   ├── demo\_commands.txt
-
-│   └── presentation\_notes.txt
-
+│   ├── attack_plan.md
+│   ├── demo_commands.txt
+│   └── presentation_notes.txt
 │
-
 └── reports/
+    ├── report_single_drone.txt
+    └── report_three_drones.txt
+```
 
-&#x20;   ├── report\_single\_drone.txt
+## Tools
 
-&#x20;   └── report\_three\_drones.txt
+### Reconnaissance
 
-
-
-Tools
-
-Reconnaissance
-
-recon.py
+`recon.py`
 
 Performs reconnaissance of the MAVLink environment and helps identify reachable MAVLink endpoints and UAVs.
 
-MAVLink Inspector
+### MAVLink Inspector
 
-mavlink\_inspector.py
+`mavlink_inspector.py`
 
 Inspects MAVLink traffic and extracts information useful for understanding the communication occurring between the simulated UAVs and the ground station.
 
-Vulnerability Tester
+### Vulnerability Tester
 
-vuln\_tester.py
+`vuln_tester.py`
 
 Automates a set of security checks against the MAVLink environment and produces reports that can be used to evaluate the observed attack surface.
 
-MAVLink Fuzzer
+### MAVLink Fuzzer
 
-fuzzer.py
+`fuzzer.py`
 
 Generates and sends test inputs to evaluate how MAVLink endpoints react to malformed, unexpected, or unusual messages in the controlled simulation environment.
 
-Message Injection
+### Message Injection
 
-inject\_qgc.py
+`inject_qgc.py`
 
 Explores message injection against the Ground Control Station side of the experimental environment.
 
-inject\_drones\_v2.py and inject\_drones\_v3.py
+`inject_drones_v2.py` and `inject_drones_v3.py`
 
 Contain the multi-drone injection experiments developed during the project.
 
-Parameter and Availability Testing
+### Parameter and Availability Testing
 
-qgc\_param\_crash.py
+`qgc_param_crash.py`
 
 Investigates the effects of parameter-related MAVLink interactions on the Ground Control Station in the test environment.
 
-px4\_crash\_exploits.py
+`px4_crash_exploits.py`
 
 Contains experimental availability and robustness tests targeting the simulated PX4 environment.
 
-MAVProxy Hijacking
+### MAVProxy Hijacking
 
-mavproxy\_hijack.py
+`mavproxy_hijack.py`
 
 Supports experiments in which MAVProxy is used to intercept MAVLink communication and interact with the traffic flowing between simulated UAVs and QGroundControl.
 
-Man-in-the-Middle
+### Man-in-the-Middle
 
-mavlink\_mitm\_attack.py
+`mavlink_mitm_attack.py`
 
 Implements the project's MAVLink man-in-the-middle experiment.
 
-launch\_mitm.sh
+`launch_mitm.sh`
 
 Sets up the MAVProxy-based MITM environment used with the PX4 SITL instances and QGroundControl.
 
-MAVLink Signing Analysis
+### MAVLink Signing Analysis
 
-threat\_c\_signing\_bypass.py
+`threat_c_signing_bypass.py`
 
 Contains the experiments related to MAVLink signing and the corresponding threat scenario investigated during the project.
 
-Installation
+## Installation
 
 The recommended environment is WSL2/Ubuntu.
 
 Clone the repository:
 
-git clone <repository-url>
-
-cd <repository-name>
-
-
+```bash
+git clone https://github.com/Krabby24/mav-raiders.git
+cd mav-raiders
+```
 
 Create a Python virtual environment:
 
+```bash
 python3 -m venv .venv
-
 source .venv/bin/activate
-
-
+```
 
 Install the Python dependencies:
 
+```bash
 python3 -m pip install --upgrade pip
-
 pip install -r requirements.txt
-
-
+```
 
 The project was tested with Python 3.12.3.
 
-Dependencies
+## Dependencies
 
 The reference environment used:
 
+```text
 pymavlink==2.4.49
-
 scapy==2.7.0
-
 colorama==0.4.6
-
 tabulate==0.10.0
-
 MAVProxy==1.8.74
-
-
+```
 
 Additional components required to reproduce the complete experimental environment include:
 
-\- PX4 SITL
+- PX4 SITL
+- QGroundControl
+- WSL2 / Ubuntu
 
-\- QGroundControl
-
-\- WSL2 / Ubuntu
-
-Experimental Data
+## Experimental Data
 
 Packet captures and demonstration videos generated during the experiments are intentionally not stored in the main Git repository.
 
 Large experimental artifacts can instead be distributed separately, for example through GitHub Releases.
 
-Reports
+## Reports
 
-The reports/ directory contains output generated during the security assessment, including experiments involving a single simulated drone and a three-drone environment.
+The `reports/` directory contains output generated during the security assessment, including experiments involving a single simulated drone and a three-drone environment.
 
-Documentation
+## Documentation
 
-Additional project material is available under docs/:
+Additional project material is available under `docs/`:
 
-\- attack\_plan.md — attack and experimentation plan
+- `attack_plan.md` — attack and experimentation plan
+- `demo_commands.txt` — commands used during project demonstrations
+- `presentation_notes.txt` — notes associated with the project presentation
 
-\- demo\_commands.txt — commands used during project demonstrations
-
-\- presentation\_notes.txt — notes associated with the project presentation
-
-Ethical Use
+## Ethical Use
 
 This repository contains cybersecurity research tooling developed for academic purposes.
 
@@ -346,11 +241,10 @@ The experiments were performed in a controlled and authorized PX4 SITL simulatio
 
 Do not use these tools against UAVs, networks, ground stations, or other systems without authorization.
 
-Limitations
+## Limitations
 
 The project focuses primarily on a simulated PX4/MAVLink environment. Results obtained in SITL should not automatically be assumed to apply identically to physical UAV systems, different autopilot implementations, different network configurations, or different MAVLink security configurations.
 
-Disclaimer
+## Disclaimer
 
 This project is provided for educational and research purposes. Users are responsible for ensuring that any testing performed with the code complies with applicable laws, regulations, and authorization requirements.
-
