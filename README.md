@@ -215,11 +215,18 @@ Additional components required to reproduce the complete experimental environmen
 - QGroundControl
 - WSL2 / Ubuntu
 
-## Experimental Data
+## Experimental Data and Demonstrations
 
 Packet captures and demonstration videos generated during the experiments are intentionally not stored in the main Git repository.
 
-Large experimental artifacts can instead be distributed separately, for example through GitHub Releases.
+The experimental artifacts are available in the [MAV Raiders v1.0.0 release](https://github.com/Krabby24/mav-raiders/releases/tag/v1.0.0).
+
+### Release Assets
+
+- `MITM_DRONES.mp4` — demonstration of the multi-drone MAVLink MITM scenario
+- `INJECT_QGC_CD.mp4` — demonstration of the QGroundControl injection experiment
+- `cattura_3droni.pcap` — packet capture from the three-drone environment
+- `cattura_test_20260313_115900.pcap` — packet capture from the single-drone/test environment
 
 ## Reports
 
